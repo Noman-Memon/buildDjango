@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from datetime import datetime
+from myapp.forms import InputForm, BookingForm
 
 # Create your views here.
 def home(request):
@@ -50,3 +51,18 @@ def menueItem (request, name):
     }
     description = items[name]
     return HttpResponse(f'<h2> {name}</h2>' + description )
+
+
+def form(request):
+    form = InputForm()
+    context = {"form":form}
+    return render(request, "home.html", context)
+    
+def form_view(request):
+    form = BookingForm()
+    if request.method == 'POST':
+        form = BookingForm(request.POST)
+        if form.is_valid():
+            form.save()
+    context = {"form": form}
+    return render(request, "home.html", context)
