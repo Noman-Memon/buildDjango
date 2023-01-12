@@ -1,0 +1,20 @@
+{%if bookings%}
+{% for details in bookings %}
+<ul>
+<li>
+    {{details.first_name}}:{{details.last_name}}
+</li>
+<li>
+{{details.guest_count}}
+    
+</li>
+<li>
+        {{details.reservation_time}}
+    </li>
+
+
+</ul>
+{% endfor%}
+{% else %}
+<p> no data found</p>
+{% endif%}
