@@ -81,3 +81,6 @@ def my_bookings(request):
     my_bookings = Booking.objects.all()
     my_booking_dic = {'bookings' : my_bookings}
     return render(request, 'my_bookings.html', my_booking_dic)
+
+
+
